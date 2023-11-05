@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  express-app:
+    build: 
+      context: .docker/config/
+      dockerfile: Dockerfile
+    image: dwirifki10/express-app:v1.0
+    container_name: express-app-container
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    command: "nodemon --legacy-watch app.js"
+    restart: always
+
+  mongodb:
+    image: mongo
+    container_name: mongo-container
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongo-data:/data/db
+    restart: always

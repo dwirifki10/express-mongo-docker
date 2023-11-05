@@ -1,0 +1,8 @@
+# .env files
+.env
+
+# MongoDB data directory
+mongo-data/
+
+# Node.js dependencies
+node_modules/
