@@ -1,13 +1,21 @@
-FROM node:14-alpine
+FROM node:16-alpine
 
 WORKDIR /app
 
+# Copy package.json and package-lock.json separately
+COPY ../../package*.json .
+
+# Install dependencies
 RUN npm install
 
+# Install nodemon globally
 RUN npm install -g nodemon
 
-COPY ../../. /app 
+# Copy the rest of the application code
+COPY ../../. .
 
+# Command to run when the container starts
 CMD ["npm", "run", "start"]
 
+# Expose port used by your application
 EXPOSE 3000

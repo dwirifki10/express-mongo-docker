@@ -1,12 +1,12 @@
-version: "3.9"
+version: "3"
 
 services:
   express-app:
     build: 
       context: .docker/config/
       dockerfile: Dockerfile
-    image: dwirifki10/express-app:v1.0
-    container_name: express-app-container
+    image: express-app
+    container_name: express-container
     volumes:
       - .:/app
     ports:
